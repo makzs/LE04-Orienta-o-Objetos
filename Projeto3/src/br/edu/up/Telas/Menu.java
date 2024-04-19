@@ -37,12 +37,12 @@ public class Menu {
         leitor.close();
     }
 
-    public void telaMes() {
+    public void telaAno() {
         Scanner leitor = new Scanner(System.in);
         int opcao;
 
         System.out.println("---------------------------------------------");
-        System.out.println("\t\t    Meses");
+        System.out.println("\t\t    Anos");
         System.out.println("---------------------------------------------");
         System.out.println("1. Listar Compromissos");
         System.out.println("2. Listar Compromissos de um Mes");
@@ -80,12 +80,12 @@ public class Menu {
         leitor.close();
     }
 
-    public void telaAno() {
+    public void telaMes() {
         Scanner leitor = new Scanner(System.in);
         int opcao;
 
         System.out.println("---------------------------------------------");
-        System.out.println("\t\t    Anos");
+        System.out.println("\t\t    Meses");
         System.out.println("---------------------------------------------");
         System.out.println("1. Listar Compromissos");
         System.out.println("2. Listar Compromissos de um Dia");
