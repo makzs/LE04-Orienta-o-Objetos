@@ -9,4 +9,8 @@ public class Ano {
         this.ano = ano;
         this.bissexto = bissexto;
     }
+
+    public void adicionarMes(Mes[] mes){
+        this.meses = mes;
+    }
 }

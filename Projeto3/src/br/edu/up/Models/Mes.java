@@ -5,7 +5,7 @@ public class Mes {
     private int qtDias;
     private Dia[] dias;
 
-    Mes(int qtDias, String nome) {
+    public Mes(int qtDias, String nome) {
         this.qtDias = qtDias;
         this.nome = nome;
     }
