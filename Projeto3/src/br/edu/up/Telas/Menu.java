@@ -2,17 +2,19 @@
 package br.edu.up.Telas;
 
 import java.util.Scanner;
+import br.edu.up.Controles.*;
 
 public class Menu {
 
     public void mostrar() {
         Scanner leitor = new Scanner(System.in);
         int opcao;
+        InicializarAgenda padrao = new InicializarAgenda();
 
         System.out.println("---------------------------------------------");
         System.out.println("\t\tAGENDA VIRTUAL");
         System.out.println("---------------------------------------------");
-        System.out.println("1. Anos");
+        System.out.println("1. 2024");
         System.out.println("2. Meses");
         System.out.println("3. Dias");
         System.out.println("---------------------------------------------");
@@ -42,14 +44,13 @@ public class Menu {
         int opcao;
 
         System.out.println("---------------------------------------------");
-        System.out.println("\t\t    Anos");
+        System.out.println("\t\t    2024");
         System.out.println("---------------------------------------------");
         System.out.println("1. Listar Compromissos");
         System.out.println("2. Listar Compromissos de um Mes");
         System.out.println("3. Adicionar Compromisso");
         System.out.println("4. Excluir Compromissos");
-        System.out.println("5. Adicionar Mes");
-        System.out.println("6. Sair");
+        System.out.println("5. Sair");
         System.out.println("---------------------------------------------");
         System.out.println("Selecione uma opção: ");
         opcao = leitor.nextInt();
@@ -68,9 +69,6 @@ public class Menu {
                 // mostrar
                 break;
             case (5):
-                // mostrar
-                break;
-            case (6):
                 mostrar();
                 break;
             default:

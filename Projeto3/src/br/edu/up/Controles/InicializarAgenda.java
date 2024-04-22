@@ -4,9 +4,13 @@ import br.edu.up.Models.*;
 
 public class InicializarAgenda {
     private Mes[] Meses;
+    private Dia[] dias;
+    private Ano ano = new Ano(2024, true);
 
     public InicializarAgenda() {
         this.Meses = new Mes[12];
+        this.dias = new Dia[31];
+
 
         Mes Janeiro = new Mes(30, "Janeiro");
         Mes Fevereiro = new Mes(28, "Fevereiro");
@@ -33,6 +37,14 @@ public class InicializarAgenda {
         this.Meses[9] = Outubro;
         this.Meses[10] = Novembro;
         this.Meses[11] = Dezembro;
+
+        ano.adicionarMes(Meses);
+
+        for (int i = 0; i < 12; i++) {
+            for (int j = 1; j < Meses[i].getQtDias(); j++) {
+                dias[j] = new Dia(j);
+            }
+        }
 
     }
 
