@@ -10,7 +10,8 @@ public class Mes {
         this.nome = nome;
     }
 
-    public void adicionarDia(Dia dia){
+    public void adicionarDia(Dia[] dia){
+        this.dias = dia;
         
     }
 
