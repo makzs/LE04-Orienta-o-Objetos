@@ -3,13 +3,18 @@ package br.edu.up.Telas;
 
 import java.util.Scanner;
 import br.edu.up.Controles.*;
+import br.edu.up.Models.Ano;
 
 public class Menu {
 
     public void mostrar() {
         Scanner leitor = new Scanner(System.in);
         int opcao;
+
         InicializarAgenda padrao = new InicializarAgenda();
+        padrao.Iniciar();
+    
+        Ano ano = padrao.getAno();
 
         System.out.println("---------------------------------------------");
         System.out.println("\t\tAGENDA VIRTUAL");
@@ -43,6 +48,11 @@ public class Menu {
         Scanner leitor = new Scanner(System.in);
         int opcao;
 
+        InicializarAgenda padrao = new InicializarAgenda();
+        padrao.Iniciar();
+    
+        Ano ano = padrao.getAno();
+
         System.out.println("---------------------------------------------");
         System.out.println("\t\t    2024");
         System.out.println("---------------------------------------------");
@@ -57,10 +67,10 @@ public class Menu {
 
         switch (opcao) {
             case (1):
-                // mostrar
+                // m
                 break;
             case (2):
-                // mostrar
+                // m
                 break;
             case (3):
                 // mostrar

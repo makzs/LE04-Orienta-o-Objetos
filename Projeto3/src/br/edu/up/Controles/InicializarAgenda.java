@@ -7,7 +7,7 @@ public class InicializarAgenda {
     private Dia[] dias;
     private Ano ano = new Ano(2024, true);
 
-    public InicializarAgenda() {
+    public void Iniciar() {
         this.Meses = new Mes[12];
         this.dias = new Dia[31];
 
@@ -21,7 +21,7 @@ public class InicializarAgenda {
         Mes Julho = new Mes(31, "Julho");
         Mes Agosto = new Mes(31, "Agosto");
         Mes Setembro = new Mes(30, "Setembro");
-        Mes Outubro = new Mes(31, "Setembro");
+        Mes Outubro = new Mes(31, "Outubro");
         Mes Novembro = new Mes(30, "Novembro");
         Mes Dezembro = new Mes(31, "Dezembro");
 
@@ -38,14 +38,33 @@ public class InicializarAgenda {
         this.Meses[10] = Novembro;
         this.Meses[11] = Dezembro;
 
-        ano.adicionarMes(Meses);
-
+        
         for (int i = 0; i < 12; i++) {
             for (int j = 1; j < Meses[i].getQtDias(); j++) {
                 dias[j] = new Dia(j);
             }
+            Meses[i].adicionarDia(dias);
+            for (int j = 1; j < Meses[i].getQtDias(); j++) {
+                dias[j] = null;
+            }
         }
 
+        ano.adicionarMes(Meses);
+
+        
+
+    }
+
+    public Mes[] getMeses() {
+        return Meses;
+    }
+
+    public Dia[] getDias() {
+        return dias;
+    }
+
+    public Ano getAno() {
+        return ano;
     }
 
 }

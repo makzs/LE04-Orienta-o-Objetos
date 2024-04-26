@@ -1,31 +1,17 @@
 package br.edu.up.Models;
 
 public class Dia {
+
     private int diaMes;
     private Compromisso[] compromissos;
 
-    public int getDiaMes() {
-        return diaMes;
-    }
-
-    public void setDiaMes(int diaMes) {
-        this.diaMes = diaMes;
-    }
-
-    public Compromisso[] getCompromissos() {
-        return compromissos;
-    }
-
-    public void setCompromissos(Compromisso[] compromissos) {
-        this.compromissos = compromissos;
-    }
-
     public Dia(int dia) {
         this.diaMes = dia;
+        this.compromissos = new Compromisso[24];
     }
 
-    public void adicionarCompromisso(Compromisso[] comp){
-        this.compromissos = comp;
+    public void adicionarCompromissos(Compromisso[] comps){
+        this.compromissos = comps;
 
     }
 
@@ -75,5 +61,22 @@ public class Dia {
         
     }
 
+    }
+
+    
+    public int getDiaMes() {
+        return diaMes;
+    }
+
+    public void setDiaMes(int diaMes) {
+        this.diaMes = diaMes;
+    }
+
+    public Compromisso[] getCompromissos() {
+        return compromissos;
+    }
+
+    public void setCompromissos(Compromisso[] compromissos) {
+        this.compromissos = compromissos;
     }
 }

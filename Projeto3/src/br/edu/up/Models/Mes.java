@@ -10,10 +10,15 @@ public class Mes {
         this.nome = nome;
     }
 
+    public void adicionarDia(Dia[] dia){
+        this.dias = dia;
+        
+    }
+
     public void adicionarCompromisso(Compromisso[] comp, int diaMes) {
         for (int i = 0; i < dias.length; i++) {
             if (diaMes == dias[i].getDiaMes()) {
-                dias[i].adicionarCompromisso(comp);
+                dias[i].adicionarCompromissos(comp);
             }
         }
 
@@ -25,10 +30,37 @@ public class Mes {
                 Compromisso comp = new Compromisso(pessoa, local, assunto, hora);
                 Compromisso[] arrayComp = new Compromisso[1];
                 arrayComp[0] = comp;
-                dias[i].adicionarCompromisso(arrayComp);
+                dias[i].adicionarCompromissos(arrayComp);
             }
         }
     }
+
+    public void excluirCompromisso(int diaMes, int hora) {
+        for (int i = 0; i < dias.length; i++) {
+            if (diaMes == dias[i].getDiaMes()) {
+                dias[i].excluirCompromisso(hora);
+            }
+        }
+
+    }
+
+    public String listarCompromisso(int diaMes){
+        for (int i = 0; i < dias.length; i++) {
+            if (diaMes == dias[i].getDiaMes()) {
+                return dias[i].listarCompromisso();
+            }
+        }
+        return null;
+    }
+
+    public String listarCompromisso(){
+        for (int i = 0; i < dias.length; i++) {
+            dias[i].listarCompromisso();
+        }
+        return null;
+    }
+
+
 
     public String getNome() {
         return nome;
