@@ -32,11 +32,11 @@ public class Dia {
         }
     }
 
-    public Compromisso consultarComprimisso(int hora) {
+    public Compromisso consultarCompromisso(int hora) {
 
-        for (int i = 0; i < compromissos.length; i++) {
-            if (hora == compromissos[i].getHora()) {
-                return compromissos[i];
+        for (Compromisso compromisso : compromissos) {
+            if (compromisso != null && compromisso.getHora() == hora) {
+                return compromisso;
             }
         }
         return null;

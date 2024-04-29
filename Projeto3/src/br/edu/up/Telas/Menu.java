@@ -199,19 +199,62 @@ public class Menu {
 
         switch (opcao) {
             case (1):
+
+            boolean listado = false;
             
             for (var meses : ano.getMeses()) {
                 if (meses.getNome().equalsIgnoreCase(opcaoMes)){
                     for (var d : meses.getDias()) {
                         if (d.getDiaMes() == auxDia){
                             System.out.println(d.listarCompromisso());
+                            listado = true;
                         }
                     }
                 }
             }
+
+            if (listado == true){
+                System.out.println("Compromisso listado com sucesso");
+                System.out.println("Retornando ao menu principal");
+            }
+            else{
+                System.out.println("Ocorreu um erro ao listar os compromisso");
+                System.out.println("Retornando ao menu principal");
+            }
+
+                mostrar();
                 break;
             case (2):
-                // mostrar
+
+                boolean consultado = false;
+
+                System.out.println("Informe o horario que deseja consultar: ");
+                int horaConsulta = leitor.nextInt();
+
+                for (var meses : ano.getMeses()) {
+                    if (meses.getNome().equalsIgnoreCase(opcaoMes)){
+                        for (var d : meses.getDias()) {
+                            if (d.getDiaMes() == auxDia){
+                                Compromisso compromissoHora = d.consultarCompromisso(horaConsulta);
+                                System.out.println("Existe um compromisso essa hora!");
+                                System.out.println("Pessoa: " + compromissoHora.getPessoa() + ",");
+                                System.out.println("Assunto: " + compromissoHora.getAssunto() + ",");
+                                System.out.println("Local: " + compromissoHora.getLocal() + ",");
+                                System.out.println("Hora: " + compromissoHora.getHora());
+                                consultado = true;
+                            }
+                        }
+                    }
+                }
+
+                if (consultado == true){
+                    System.out.println("");
+                }
+                else{
+                    System.out.println("Compromisso nao encontrado!");
+                }
+
+                mostrar();
                 break;
             case (3):
                 System.err.println("----------------------------");

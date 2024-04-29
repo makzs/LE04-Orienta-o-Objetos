@@ -19,6 +19,7 @@ public class InicializarAgenda {
             Dia[] dias = new Dia[diasPorMes[i]];
             for (int j = 0; j < diasPorMes[i]; j++) {
                 dias[j] = criarDia(j + 1, null);
+
             }
             meses[i] = criarMes(nomesMeses[i], diasPorMes[i], dias);
         }
