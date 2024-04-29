@@ -33,10 +33,8 @@ public class Ano {
     }
 
     public String listarCompromissos() {
-        for (int i = 0; i < meses.length; i++) {
-            for (int j = 1; j < meses[i].getQtDias(); j++) {
-                return meses[i].listarCompromisso(j);
-            }
+        for (int i = 0; i < meses.length;) {
+            return meses[i].listarCompromisso();
         }
         return null;
     }

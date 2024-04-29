@@ -4,17 +4,15 @@ package br.edu.up.Telas;
 import java.util.Scanner;
 import br.edu.up.Controles.*;
 import br.edu.up.Models.Ano;
+import br.edu.up.Models.Compromisso;
 
 public class Menu {
+    InicializarAgenda padrao = new InicializarAgenda();
+    Ano ano = padrao.criarAno(2024, true);
 
     public void mostrar() {
         Scanner leitor = new Scanner(System.in);
         int opcao;
-
-        InicializarAgenda padrao = new InicializarAgenda();
-        padrao.Iniciar();
-    
-        Ano ano = padrao.getAno();
 
         System.out.println("---------------------------------------------");
         System.out.println("\t\tAGENDA VIRTUAL");
@@ -48,11 +46,6 @@ public class Menu {
         Scanner leitor = new Scanner(System.in);
         int opcao;
 
-        InicializarAgenda padrao = new InicializarAgenda();
-        padrao.Iniciar();
-    
-        Ano ano = padrao.getAno();
-
         System.out.println("---------------------------------------------");
         System.out.println("\t\t    2024");
         System.out.println("---------------------------------------------");
@@ -67,7 +60,12 @@ public class Menu {
 
         switch (opcao) {
             case (1):
-                // m
+                for (var meses : ano.getMeses()) {
+                    for (var d : meses.getDias()) {
+                        System.out.println(d.getDiaMes());
+                    }
+                }
+                
                 break;
             case (2):
                 // m
@@ -95,6 +93,30 @@ public class Menu {
         System.out.println("---------------------------------------------");
         System.out.println("\t\t    Meses");
         System.out.println("---------------------------------------------");
+
+        String aux = "";
+
+        System.out.println("Informe o mes que deseja verificar: ");
+        for (var m : ano.getMeses()) {
+            System.out.println(m.getNome());
+        }
+        System.out.println("Opção: ");
+        String opcaoMes = leitor.nextLine();
+
+        for (var m : ano.getMeses()) {
+            if (m.getNome().equalsIgnoreCase(opcaoMes)){
+                aux = opcaoMes;
+                break;
+            }
+            else{
+                aux = "erro";
+            }
+        }
+
+        System.out.println("---------------------------------------------");
+        System.out.println(aux);
+        System.out.println("---------------------------------------------");
+
         System.out.println("1. Listar Compromissos");
         System.out.println("2. Listar Compromissos de um Dia");
         System.out.println("3. Adicionar Compromisso");
@@ -134,6 +156,38 @@ public class Menu {
         System.out.println("---------------------------------------------");
         System.out.println("\t\t    Dias");
         System.out.println("---------------------------------------------");
+
+        String aux = "";
+
+        System.out.println("Informe o mes que deseja verificar: ");
+        for (var m : ano.getMeses()) {
+            System.out.println(m.getNome());
+        }
+        System.out.println("Opção: ");
+        String opcaoMes = leitor.nextLine();
+
+        for (var m : ano.getMeses()) {
+            if (m.getNome().equalsIgnoreCase(opcaoMes)){
+                aux = opcaoMes;
+                break;
+            }
+            else{
+                aux = "erro";
+            }
+        }
+
+        System.out.println("---------------------------------------------");
+        System.out.println(aux);
+        System.out.println("---------------------------------------------");
+
+        System.out.println("Informe o dia que deseja ");
+        int auxDia = leitor.nextInt();
+
+        System.out.println("---------------------------------------------");
+        System.out.println(auxDia);
+        System.out.println("---------------------------------------------");
+
+
         System.out.println("1. Listar Compromissos");
         System.out.println("2. Listar Compromissos de uma hora");
         System.out.println("3. Adicionar Compromisso");
@@ -145,13 +199,60 @@ public class Menu {
 
         switch (opcao) {
             case (1):
-                // mostrar
+            
+            for (var meses : ano.getMeses()) {
+                if (meses.getNome().equalsIgnoreCase(opcaoMes)){
+                    for (var d : meses.getDias()) {
+                        if (d.getDiaMes() == auxDia){
+                            System.out.println(d.listarCompromisso());
+                        }
+                    }
+                }
+            }
                 break;
             case (2):
                 // mostrar
                 break;
             case (3):
-                // mostrar
+                System.err.println("----------------------------");
+                System.err.println("Adicionar Compromisso em um Dia: ");
+                System.err.println("----------------------------");
+                leitor.nextLine();
+
+                System.out.println("Informe o campo pessoa: ");
+                String pessoa = leitor.nextLine();
+                System.out.println("Informe o campo local: ");
+                String local = leitor.nextLine();
+                System.out.println("Informe o campo assunto: ");
+                String assunto = leitor.nextLine();
+                System.out.println("Informe o campo hora: ");
+                int hora = leitor.nextInt();
+
+                Compromisso DiaCompromisso = new Compromisso(pessoa, local, assunto, hora);
+
+                boolean adicionado = false;
+
+                for (var meses : ano.getMeses()) {
+                    if (meses.getNome().equalsIgnoreCase(opcaoMes)){
+                        for (var d : meses.getDias()) {
+                            if (d.getDiaMes() == auxDia){
+                                d.adicionarCompromisso(DiaCompromisso);
+                                adicionado = true;
+                            }
+                        }
+                    }
+                }
+
+                if (adicionado == true){
+                    System.out.println("Compromisso Adicionado com sucesso");
+                    System.out.println("Retornando ao menu principal");
+                }
+                else{
+                    System.out.println("Ocorreu um erro ao adicionar o compromisso");
+                    System.out.println("Retornando ao menu principal");
+                }
+
+                mostrar();
                 break;
             case (4):
                 // mostrar
