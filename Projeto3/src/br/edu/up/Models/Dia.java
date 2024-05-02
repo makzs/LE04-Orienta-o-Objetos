@@ -43,6 +43,7 @@ public class Dia {
     }
 
     public String listarCompromisso() {
+        
         String lista = "Compromissos do dia " + diaMes + ":\n";
 
         for (Compromisso compromisso : compromissos) {
