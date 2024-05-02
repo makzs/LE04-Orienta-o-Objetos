@@ -128,10 +128,52 @@ public class Menu {
 
         switch (opcao) {
             case (1):
-                // mostrar
+            boolean listado = false;
+            
+            for (var meses : ano.getMeses()) {
+                if (meses.getNome().equalsIgnoreCase(opcaoMes)){
+                    System.out.println(meses.listarCompromisso());
+                    listado = true;
+                }
+            }
+
+            if (listado == true){
+                System.out.println("Compromisso de todo o mes listado com sucesso");
+                System.out.println("Retornando ao menu principal");
+            }
+            else{
+                System.out.println("Ocorreu um erro ao listar os compromisso do mes inteiro");
+                System.out.println("Retornando ao menu principal");
+            }
+
+                mostrar();
                 break;
             case (2):
-                // mostrar
+                boolean consultado = false;
+
+                System.out.println("Informe o dia que deseja consultar: ");
+                int diaConsulta = leitor.nextInt();
+
+                for (var meses : ano.getMeses()) {
+                    if (meses.getNome().equalsIgnoreCase(opcaoMes)){
+                        if (meses.listarCompromisso() != null){
+                            System.out.println(meses.listarCompromisso(diaConsulta));
+                            consultado = true;
+                        }
+                        else{
+                            System.err.println("Dia sem compromissos!");
+                        }
+                    }
+                }
+
+                if (consultado == true){
+                    System.out.println("");
+                }
+                else{
+                    System.out.println("Compromisso nao encontrado!");
+                }
+
+                mostrar();
                 break;
             case (3):
                 // mostrar
@@ -180,6 +222,10 @@ public class Menu {
         System.out.println(aux);
         System.out.println("---------------------------------------------");
 
+        if (aux.equals("erro")){
+            mostrar();
+        }
+
         System.out.println("Informe o dia que deseja ");
         int auxDia = leitor.nextInt();
 
@@ -199,19 +245,67 @@ public class Menu {
 
         switch (opcao) {
             case (1):
+
+            boolean listado = false;
             
             for (var meses : ano.getMeses()) {
                 if (meses.getNome().equalsIgnoreCase(opcaoMes)){
                     for (var d : meses.getDias()) {
                         if (d.getDiaMes() == auxDia){
                             System.out.println(d.listarCompromisso());
+                            listado = true;
                         }
                     }
                 }
             }
+
+            if (listado == true){
+                System.out.println("Compromisso listado com sucesso");
+                System.out.println("Retornando ao menu principal");
+            }
+            else{
+                System.out.println("Ocorreu um erro ao listar os compromisso");
+                System.out.println("Retornando ao menu principal");
+            }
+
+                mostrar();
                 break;
             case (2):
-                // mostrar
+
+                boolean consultado = false;
+
+                System.out.println("Informe o horario que deseja consultar: ");
+                int horaConsulta = leitor.nextInt();
+
+                for (var meses : ano.getMeses()) {
+                    if (meses.getNome().equalsIgnoreCase(opcaoMes)){
+                        for (var d : meses.getDias()) {
+                            if (d.getDiaMes() == auxDia){
+                                if ( d.consultarCompromisso(horaConsulta) != null){
+                                    Compromisso compromissoHora = d.consultarCompromisso(horaConsulta);
+                                    System.out.println("Existe um compromisso essa hora!");
+                                    System.out.println("Pessoa: " + compromissoHora.getPessoa() + ",");
+                                    System.out.println("Assunto: " + compromissoHora.getAssunto() + ",");
+                                    System.out.println("Local: " + compromissoHora.getLocal() + ",");
+                                    System.out.println("Hora: " + compromissoHora.getHora());
+                                    consultado = true;
+                                }
+                                else{
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (consultado == true){
+                    System.out.println("");
+                }
+                else{
+                    System.out.println("Compromisso nao encontrado!");
+                }
+
+                mostrar();
                 break;
             case (3):
                 System.err.println("----------------------------");
@@ -255,8 +349,35 @@ public class Menu {
                 mostrar();
                 break;
             case (4):
-                // mostrar
-                break;
+            boolean removido = false;
+
+            System.out.println("Informe o horario que deseja excluir o compromisso: ");
+            int horaRemocao = leitor.nextInt();
+
+            for (var meses : ano.getMeses()) {
+                if (meses.getNome().equalsIgnoreCase(opcaoMes)){
+                    for (var d : meses.getDias()) {
+                        if (d.getDiaMes() == auxDia){
+                            if ( d.consultarCompromisso(horaRemocao) != null){
+                                System.out.println("Existe um compromisso essa hora!");
+                                System.out.println("Excluindo compromisso...\n");
+                                d.excluirCompromisso(horaRemocao);
+                                removido = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (removido == true){
+                System.out.println("Compromisso Exlcuido com sucesso!");
+            }
+            else{
+                System.out.println("Compromisso nao encontrado!");
+            }
+
+            mostrar();
+            break;
             case (5):
                 mostrar();
                 break;

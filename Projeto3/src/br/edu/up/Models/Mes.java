@@ -45,19 +45,32 @@ public class Mes {
     }
 
     public String listarCompromisso(int diaMes){
-        for (int i = 0; i < dias.length; i++) {
-            if (diaMes == dias[i].getDiaMes()) {
-                return dias[i].listarCompromisso();
+
+        String listaMes = "compromissos do mes: \n";
+
+        for (Dia dia : dias) {
+            if (diaMes == dia.getDiaMes()) {
+                if (dia.listarCompromisso() != null){
+                    listaMes += dia.listarCompromisso() + "\n";
+                }
+                else{
+                    listaMes += "sem compromissos";
+                }
             }
         }
-        return null;
+        return listaMes;
     }
 
     public String listarCompromisso(){
-        for (int i = 0; i < dias.length; i++) {
-            dias[i].listarCompromisso();
+
+        String listaMes = "compromissos do mes: \n";
+
+        for (Dia dia : dias) {
+            if (dia.getCompromissos() != null){
+                listaMes += dia.listarCompromisso() + "\n";
+            }
         }
-        return null;
+        return listaMes;
     }
 
 
