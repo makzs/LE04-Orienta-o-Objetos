@@ -10,9 +10,9 @@ public class Mes {
         this.nome = nome;
     }
 
-    public void adicionarDia(Dia[] dia){
+    public void adicionarDia(Dia[] dia) {
         this.dias = dia;
-        
+
     }
 
     public void adicionarCompromisso(Compromisso[] comp, int diaMes) {
@@ -44,36 +44,32 @@ public class Mes {
 
     }
 
-    public String listarCompromisso(int diaMes){
+    public String listarCompromisso(int diaMes) {
 
         String listaMes = "compromissos do mes: \n";
 
         for (Dia dia : dias) {
             if (diaMes == dia.getDiaMes()) {
-                if (dia.listarCompromisso() != null){
+                if (dia.listarCompromisso() != null) {
                     listaMes += dia.listarCompromisso() + "\n";
-                }
-                else{
-                    listaMes += "sem compromissos";
                 }
             }
         }
+
         return listaMes;
     }
 
-    public String listarCompromisso(){
+    public String listarCompromisso() {
 
         String listaMes = "compromissos do mes: \n";
 
         for (Dia dia : dias) {
-            if (dia.getCompromissos() != null){
+            if (dia.getCompromissos() != null) {
                 listaMes += dia.listarCompromisso() + "\n";
             }
         }
         return listaMes;
     }
-
-
 
     public String getNome() {
         return nome;

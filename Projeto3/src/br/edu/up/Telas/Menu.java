@@ -176,10 +176,67 @@ public class Menu {
                 mostrar();
                 break;
             case (3):
-                // mostrar
+                System.err.println("----------------------------");
+                System.err.println("Adicionar Compromisso em um Dia: ");
+                System.err.println("----------------------------");
+                leitor.nextLine();
+
+                System.out.println("Informe o dia que deseja adicionar um compromisso: ");
+                int auxDia = leitor.nextInt();
+                leitor.nextLine();
+                System.out.println("Informe o campo pessoa: ");
+                String pessoa = leitor.nextLine();
+                System.out.println("Informe o campo local: ");
+                String local = leitor.nextLine();
+                System.out.println("Informe o campo assunto: ");
+                String assunto = leitor.nextLine();
+                System.out.println("Informe o campo hora: ");
+                int hora = leitor.nextInt();
+
+                boolean adicionado = false;
+
+                for (var meses : ano.getMeses()) {
+                    if (meses.getNome().equalsIgnoreCase(opcaoMes)){
+                        meses.adicionarCompromisso(pessoa, local, assunto, hora, auxDia);
+                        adicionado = true;
+                    }
+                }
+
+                if (adicionado == true){
+                    System.out.println("Compromisso Adicionado com sucesso");
+                    System.out.println("Retornando ao menu principal");
+                }
+                else{
+                    System.out.println("Ocorreu um erro ao adicionar o compromisso");
+                    System.out.println("Retornando ao menu principal");
+                }
+
+                mostrar();
                 break;
             case (4):
-                // mostrar
+                boolean removido = false;
+
+                System.out.println("Informe o dia que deseja excluir o compromisso: ");
+                int diaRemocao = leitor.nextInt();
+
+                System.out.println("Informe o horario que deseja excluir o compromisso: ");
+                int horaRemocao = leitor.nextInt();
+
+                for (var meses : ano.getMeses()) {
+                    if (meses.getNome().equalsIgnoreCase(opcaoMes)){
+                        meses.excluirCompromisso(diaRemocao, horaRemocao);
+                        removido = true;
+                    }
+                }
+
+                if (removido == true){
+                    System.out.println("Compromisso Exlcuido com sucesso!");
+                }
+                else{
+                    System.out.println("Compromisso nao encontrado!");
+                }
+
+                mostrar();
                 break;
             case (5):
                 mostrar();

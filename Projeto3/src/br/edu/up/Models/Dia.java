@@ -46,6 +46,10 @@ public class Dia {
         
         String lista = "Compromissos do dia " + diaMes + ":\n";
 
+        if (compromissos == null) {
+            return lista + "Sem compromissos\n";
+        }
+
         for (Compromisso compromisso : compromissos) {
             if (compromisso != null) {
                 lista += "Pessoa: " + compromisso.getPessoa() + ", ";
