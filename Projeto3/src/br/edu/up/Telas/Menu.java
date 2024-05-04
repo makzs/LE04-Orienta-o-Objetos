@@ -60,12 +60,24 @@ public class Menu {
 
         switch (opcao) {
             case (1):
-                for (var meses : ano.getMeses()) {
-                    for (var d : meses.getDias()) {
-                        System.out.println(d.getDiaMes());
-                    }
+                boolean listado = false;
+
+                if (ano.listarCompromissos() != null){
+                    System.out.println(ano.listarCompromissos());
+                    listado = true;
                 }
                 
+
+                if (listado == true){
+                    System.out.println("Compromisso de todo o ano listado com sucesso");
+                    System.out.println("Retornando ao menu principal");
+                }
+                else{
+                    System.out.println("Ocorreu um erro ao listar os compromisso do ano inteiro");
+                    System.out.println("Retornando ao menu principal");
+                }
+
+                mostrar();
                 break;
             case (2):
                 // m

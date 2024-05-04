@@ -33,10 +33,12 @@ public class Ano {
     }
 
     public String listarCompromissos() {
-        for (int i = 0; i < meses.length;) {
-            return meses[i].listarCompromisso();
+        String listaAno = "";
+
+        for (Mes mes : meses) {
+            listaAno += mes.getNome() + " : " + mes.listarCompromisso() + "\n";
         }
-        return null;
+        return listaAno;
     }
 
     public int getAno() {
