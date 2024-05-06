@@ -25,13 +25,21 @@ public class Ano {
 
     public String listarCompromissos(String nomeMes) {
         String listaAno = "";
+        boolean encontrado = false;
 
         for (Mes mes : meses) {
-            if (nomeMes == mes.toString()){
+            if (nomeMes.equalsIgnoreCase(mes.getNome())){
                 listaAno += mes.getNome() + " : " + mes.listarCompromisso() + "\n";
+                encontrado = true;
 
             }
+
         }
+
+        if (!encontrado) {
+            listaAno = "Esse mês não possui compromissos.";
+        }
+
         return listaAno;
     }
 

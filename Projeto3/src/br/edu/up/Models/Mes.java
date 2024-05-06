@@ -73,7 +73,7 @@ public class Mes {
         }
 
         if (!temCompromissos) {
-            listaMes = "sem compromissos";
+            listaMes = "\nsem compromissos";
         }
 
         return listaMes;

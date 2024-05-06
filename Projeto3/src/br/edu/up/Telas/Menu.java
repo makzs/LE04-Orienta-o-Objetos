@@ -7,8 +7,35 @@ import br.edu.up.Models.Ano;
 import br.edu.up.Models.Compromisso;
 
 public class Menu {
+
+    // VARIAVEIS GLOBAIS
+
     InicializarAgenda padrao = new InicializarAgenda();
     Ano ano = padrao.criarAno(2024, true);
+
+    // FUNCOES GLOBAIS
+
+    // funcao para dar clear no console
+    public static void clearConsole() {  
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();  
+    }
+
+    // funcao para dar sleep no console (delay)
+    public static void wait(int ms)
+    {
+        try
+        {
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+
+    // MENU PRINCIPAL
 
     public void mostrar() {
         Scanner leitor = new Scanner(System.in);
@@ -42,6 +69,8 @@ public class Menu {
         leitor.close();
     }
 
+    // MENU ANO
+
     public void telaAno() {
         Scanner leitor = new Scanner(System.in);
         int opcao;
@@ -51,9 +80,7 @@ public class Menu {
         System.out.println("---------------------------------------------");
         System.out.println("1. Listar Compromissos");
         System.out.println("2. Listar Compromissos de um Mes");
-        System.out.println("3. Adicionar Compromisso");
-        System.out.println("4. Excluir Compromissos");
-        System.out.println("5. Sair");
+        System.out.println("3. Sair");
         System.out.println("---------------------------------------------");
         System.out.println("Selecione uma opção: ");
         opcao = leitor.nextInt();
@@ -70,25 +97,46 @@ public class Menu {
 
                 if (listado == true){
                     System.out.println("Compromisso de todo o ano listado com sucesso");
-                    System.out.println("Retornando ao menu principal");
+                    System.out.println("Retornando ao menu principal...");
                 }
                 else{
                     System.out.println("Ocorreu um erro ao listar os compromisso do ano inteiro");
-                    System.out.println("Retornando ao menu principal");
+                    System.out.println("Retornando ao menu principal...");
                 }
 
                 mostrar();
                 break;
             case (2):
-                // m
+                boolean listadoEmMes = false;
+
+                for (var m : ano.getMeses()) {
+                    System.out.println(m.getNome());
+                }
+
+                leitor.nextLine();
+                System.out.println("Informe o mes que deseja consultar: ");
+                String mesConsulta = leitor.nextLine();
+
+                for (var mes : ano.getMeses()) {
+                    if (mes.getNome().equalsIgnoreCase(mesConsulta)){
+                        System.out.println(ano.listarCompromissos(mesConsulta));
+                        listadoEmMes = true;
+                    }
+                }
+                
+
+                if (listadoEmMes == true){
+                    System.out.println("Compromisso de todo o mes especifico listado com sucesso");
+                    System.out.println("Retornando ao menu principal...");
+                }
+                else{
+                    System.out.println("Esse mes nao possui compromissos");
+                    System.out.println("Retornando ao menu principal...");
+                }
+
+                mostrar();
                 break;
             case (3):
-                // mostrar
-                break;
-            case (4):
-                // mostrar
-                break;
-            case (5):
                 mostrar();
                 break;
             default:
@@ -97,6 +145,8 @@ public class Menu {
 
         leitor.close();
     }
+
+    // MENU MES
 
     public void telaMes() {
         Scanner leitor = new Scanner(System.in);
@@ -151,13 +201,15 @@ public class Menu {
 
             if (listado == true){
                 System.out.println("Compromisso de todo o mes listado com sucesso");
-                System.out.println("Retornando ao menu principal");
+                System.out.println("Retornando ao menu principal...");
             }
             else{
                 System.out.println("Ocorreu um erro ao listar os compromisso do mes inteiro");
-                System.out.println("Retornando ao menu principal");
+                System.out.println("Retornando ao menu principal...");
             }
 
+                wait(6000);
+                clearConsole();
                 mostrar();
                 break;
             case (2):
@@ -185,6 +237,8 @@ public class Menu {
                     System.out.println("Compromisso nao encontrado!");
                 }
 
+                wait(6000);
+                clearConsole();
                 mostrar();
                 break;
             case (3):
@@ -216,13 +270,15 @@ public class Menu {
 
                 if (adicionado == true){
                     System.out.println("Compromisso Adicionado com sucesso");
-                    System.out.println("Retornando ao menu principal");
+                    System.out.println("Retornando ao menu principal...");
                 }
                 else{
                     System.out.println("Ocorreu um erro ao adicionar o compromisso");
-                    System.out.println("Retornando ao menu principal");
+                    System.out.println("Retornando ao menu principal...");
                 }
 
+                wait(3000);
+                clearConsole();
                 mostrar();
                 break;
             case (4):
@@ -243,11 +299,15 @@ public class Menu {
 
                 if (removido == true){
                     System.out.println("Compromisso Exlcuido com sucesso!");
+                    System.out.println("Retornando ao menu principal...");
                 }
                 else{
                     System.out.println("Compromisso nao encontrado!");
+                    System.out.println("Retornando ao menu principal...");
                 }
 
+                wait(3000);
+                clearConsole();
                 mostrar();
                 break;
             case (5):
@@ -259,6 +319,8 @@ public class Menu {
 
         leitor.close();
     }
+
+    // MENU DIA
 
     public void telaDia() {
         Scanner leitor = new Scanner(System.in);
@@ -292,14 +354,21 @@ public class Menu {
         System.out.println("---------------------------------------------");
 
         if (aux.equals("erro")){
+            System.out.println("Retornando ao menu principal...");
+            wait(3000);
+            clearConsole();
             mostrar();
         }
 
         System.out.println("Informe o dia que deseja ");
         int auxDia = leitor.nextInt();
 
+        System.out.println("Carregando informações...");
+        wait(3000);
+        clearConsole();
+
         System.out.println("---------------------------------------------");
-        System.out.println(auxDia);
+        System.out.println("Dia " + auxDia);
         System.out.println("---------------------------------------------");
 
 
@@ -330,13 +399,15 @@ public class Menu {
 
             if (listado == true){
                 System.out.println("Compromisso listado com sucesso");
-                System.out.println("Retornando ao menu principal");
+                System.out.println("Retornando ao menu principal...");
             }
             else{
                 System.out.println("Ocorreu um erro ao listar os compromisso");
-                System.out.println("Retornando ao menu principal");
+                System.out.println("Retornando ao menu principal...");
             }
 
+                wait(6000);
+                clearConsole();
                 mostrar();
                 break;
             case (2):
@@ -374,6 +445,8 @@ public class Menu {
                     System.out.println("Compromisso nao encontrado!");
                 }
 
+                wait(6000);
+                clearConsole();
                 mostrar();
                 break;
             case (3):
@@ -408,13 +481,15 @@ public class Menu {
 
                 if (adicionado == true){
                     System.out.println("Compromisso Adicionado com sucesso");
-                    System.out.println("Retornando ao menu principal");
+                    System.out.println("Retornando ao menu principal...");
                 }
                 else{
                     System.out.println("Ocorreu um erro ao adicionar o compromisso");
-                    System.out.println("Retornando ao menu principal");
+                    System.out.println("Retornando ao menu principal...");
                 }
 
+                wait(3000);
+                clearConsole();
                 mostrar();
                 break;
             case (4):
@@ -440,14 +515,19 @@ public class Menu {
 
             if (removido == true){
                 System.out.println("Compromisso Exlcuido com sucesso!");
+                System.out.println("Retornando ao menu principal...");
             }
             else{
                 System.out.println("Compromisso nao encontrado!");
+                System.out.println("Retornando ao menu principal...");
             }
 
+            wait(3000);
+            clearConsole();
             mostrar();
             break;
             case (5):
+                clearConsole();
                 mostrar();
                 break;
             default:
