@@ -52,22 +52,30 @@ public class Mes {
             if (diaMes == dia.getDiaMes()) {
                 if (dia.listarCompromisso() != null) {
                     listaMes += dia.listarCompromisso() + "\n";
+                } else {
+                    listaMes += "sem compromissos";
                 }
             }
         }
-
         return listaMes;
     }
 
     public String listarCompromisso() {
 
+        boolean temCompromissos = false;
         String listaMes = "compromissos do mes: \n";
 
         for (Dia dia : dias) {
             if (dia.getCompromissos() != null) {
+                temCompromissos = true;
                 listaMes += dia.listarCompromisso() + "\n";
             }
         }
+
+        if (!temCompromissos) {
+            listaMes = "sem compromissos";
+        }
+
         return listaMes;
     }
 

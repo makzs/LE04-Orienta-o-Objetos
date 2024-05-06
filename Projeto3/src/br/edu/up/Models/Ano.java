@@ -24,19 +24,24 @@ public class Ano {
     }
 
     public String listarCompromissos(String nomeMes) {
-        for (int i = 0; i < meses.length; i++) {
-            if (meses[i].getNome() == nomeMes) {
-                return meses[i].listarCompromisso();
+        String listaAno = "";
+
+        for (Mes mes : meses) {
+            if (nomeMes == mes.toString()){
+                listaAno += mes.getNome() + " : " + mes.listarCompromisso() + "\n";
+
             }
         }
-        return null;
+        return listaAno;
     }
 
     public String listarCompromissos() {
-        for (int i = 0; i < meses.length;) {
-            return meses[i].listarCompromisso();
+        String listaAno = "";
+
+        for (Mes mes : meses) {
+            listaAno += mes.getNome() + " : " + mes.listarCompromisso() + "\n";
         }
-        return null;
+        return listaAno;
     }
 
     public int getAno() {
