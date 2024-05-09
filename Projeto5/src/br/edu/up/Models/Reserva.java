@@ -8,6 +8,13 @@ public class Reserva {
 
 
     
+    public Reserva(String nome, int qtdPessoas, String data, double valor) {
+        this.nome = nome;
+        this.qtdPessoas = qtdPessoas;
+        this.data = data;
+        this.valor = valor;
+    }
+    
     public String getNome() {
         return nome;
     }

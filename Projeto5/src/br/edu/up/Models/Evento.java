@@ -9,6 +9,14 @@ public class Evento {
 
 
     
+    public Evento(String nome, String data, int lotacao, int qtdIngressos, double precoIngresso) {
+        this.nome = nome;
+        this.data = data;
+        this.lotacao = lotacao;
+        this.qtdIngressos = qtdIngressos;
+        this.precoIngresso = precoIngresso;
+    }
+    
     public String getNome() {
         return nome;
     }
