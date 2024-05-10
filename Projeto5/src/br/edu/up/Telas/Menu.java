@@ -2,7 +2,11 @@ package br.edu.up.Telas;
 
 import java.util.Scanner;
 
+import br.edu.up.Controlers.ControllerEventos;
+import br.edu.up.Models.Evento;
+
 public class Menu {
+    ControllerEventos controleEventos = new ControllerEventos(20, 10);
 
     public void mostrar() {
 
@@ -46,16 +50,60 @@ public class Menu {
 
         switch (opcao){
             case (1):
-                // metodo 1
+                leitor.nextLine();
+                System.out.println("Informe o nome do evento: ");
+                String nome = leitor.nextLine();
+                System.out.println("Informe a data do evento: ");
+                String data = leitor.nextLine();
+                System.out.println("Informe a lotação do evento: ");
+                int lotacao = leitor.nextInt();
+                System.out.println("Informe a quantidade de ingressos vendidos do evento: ");
+                int qtdIngressos = leitor.nextInt();
+                System.out.println("Informe o preço do ingresso do evento: ");
+                int precoIngresso = leitor.nextInt();
+
+                Evento novoEvento = new Evento(nome, data, lotacao, qtdIngressos, precoIngresso, 10);
+                controleEventos.IncluirEvento(novoEvento);
+
+                System.out.println("Retornando ao menu principal...");
+                mostrar();
                 break;
             case (2):
-                // metodo 2
+                leitor.nextLine();
+                System.out.println("Informe o nome do evento que deseja alterar: ");
+                String nomeAlterar = leitor.nextLine();
+
+                System.out.println("Informe o nome do evento: ");
+                String novonome = leitor.nextLine();
+                System.out.println("Informe a data do evento: ");
+                String novadata = leitor.nextLine();
+                System.out.println("Informe a lotação do evento: ");
+                int novalotacao = leitor.nextInt();
+                System.out.println("Informe a quantidade de ingressos vendidos do evento: ");
+                int novaqtdIngressos = leitor.nextInt();
+                System.out.println("Informe o preço do ingresso do evento: ");
+                int novoprecoIngresso = leitor.nextInt();
+
+                Evento EventoAlterado = new Evento(novonome, novadata, novalotacao, novaqtdIngressos, novoprecoIngresso, 10);
+                controleEventos.AlterarEvento(nomeAlterar, EventoAlterado);
+
+                System.out.println("Retornando ao menu principal...");
+                mostrar();
                 break;
             case (3):
-                // metodo 3
+                controleEventos.listarEventos();
+                System.out.println("Retornando ao menu principal...");
+                mostrar();
                 break;
             case (4):
-                // metodo 4 
+                leitor.nextLine();
+                System.out.println("Informe o nome do evento que deseja excluir: ");
+                String nomeExcluir = leitor.nextLine();
+
+                controleEventos.ExcluirEvento(nomeExcluir);
+
+                System.out.println("Retornando ao menu principal...");
+                mostrar();
                 break;
             case (5):
                 System.out.println("Retornando ao menu principal");
