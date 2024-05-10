@@ -6,15 +6,25 @@ public class Evento {
     private int lotacao;
     private int qtdIngressos;
     private double precoIngresso;
-
-
+    private Reserva[] reservas;
+    private int numReservas;
     
-    public Evento(String nome, String data, int lotacao, int qtdIngressos, double precoIngresso) {
+    public Evento(String nome, String data, int lotacao, int qtdIngressos, double precoIngresso, int maxReservas) {
         this.nome = nome;
         this.data = data;
         this.lotacao = lotacao;
         this.qtdIngressos = qtdIngressos;
         this.precoIngresso = precoIngresso;
+        this.reservas = new Reserva[maxReservas];
+        this.numReservas = 0;
+    }
+
+    public void adicionarReserva(Reserva novaReserva){
+        if (numReservas < reservas.length) { 
+            this.reservas[numReservas++] = novaReserva;
+        } else {
+            System.out.println("Não é possível adicionar mais reservas. Limite atingido.");
+        }
     }
     
     public String getNome() {
@@ -47,5 +57,16 @@ public class Evento {
     public void setPrecoIngresso(double precoIngresso) {
         this.precoIngresso = precoIngresso;
     }
+
+    public Reserva[] getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Reserva[] reservas) {
+        this.reservas = reservas;
+    }
+
+
+
 
 }
