@@ -2,49 +2,41 @@ package br.edu.up.Controllers;
 
 import br.edu.up.Models.Carro;
 import br.edu.up.Models.Estacionamento;
-import br.edu.up.Views.EstacionamentoView;
 
 public class EstacionamentoController {
     private Estacionamento estacionamento;
-    private EstacionamentoView estacionamentoView;
-    private int totalEntradas;
-    private int totalSaidas;
 
-    public EstacionamentoController(Estacionamento estacionamento, EstacionamentoView estacionamentoView) {
-        this.estacionamento = estacionamento;
-        this.estacionamentoView = estacionamentoView;
-        this.totalEntradas = 0;
-        this.totalSaidas = 0;
+    public EstacionamentoController() {
+        this.estacionamento = new Estacionamento();
     }
 
-    public void entradaCarro() {
-        Carro carro = estacionamentoView.lerDadosCarro();
-        boolean sucesso = estacionamento.entradaCarro(carro);
-        if (sucesso) {
-            estacionamentoView.mostrarMensagem("Carro estacionado com sucesso!");
-            totalEntradas++;
-        } else {
-            estacionamentoView.mostrarMensagem("Estacionamento lotado. Não foi possível estacionar o carro.");
-        }
+    public boolean entradaCarro(Carro carro) {
+        return estacionamento.entradaCarro(carro);
     }
 
-    public void saidaCarro() {
-        String placa = estacionamentoView.lerPlaca();
-        Carro carro = estacionamento.saidaCarro(placa);
-        if (carro != null) {
-            estacionamentoView.mostrarMensagem("Carro com placa " + placa + " foi retirado do estacionamento.");
-            totalSaidas++;
-        } else {
-            estacionamentoView.mostrarMensagem("Carro com placa " + placa + " não encontrado no estacionamento.");
-        }
+    public Carro saidaCarro(String placa) {
+        return estacionamento.saidaCarro(placa);
     }
 
-    public void emitirRelatorio() {
-        estacionamentoView.mostrarMensagem("Total de veículos que entraram: " + totalEntradas);
-        estacionamentoView.mostrarMensagem("Total de veículos que saíram: " + totalSaidas);
-        int totalCarrosEstacionados = estacionamento.getTotalCarrosEstacionados();
-        double valorTotal = estacionamento.calcularPagamentoPeriodo();
-        estacionamentoView.mostrarMensagem("Total de veículos estacionados: " + totalCarrosEstacionados);
-        estacionamentoView.mostrarMensagem("Valor total a pagar: R$ " + valorTotal);
+    public int getTotalCarrosEstacionados() {
+        return estacionamento.getTotalCarrosEstacionados();
     }
+
+    public double calcularPagamentoPeriodo() {
+        return estacionamento.calcularPagamentoPeriodo();
+    }
+
+    public String emitirRelatorio() {
+        int totalCarrosEntraram = estacionamento.getTotalCarrosEntraram();
+        int totalCarrosSairam = estacionamento.getTotalCarrosSairam();
+        int carrosEstacionadosAgora = estacionamento.getTotalCarrosEstacionados();
+        double pagamentoPeriodo = calcularPagamentoPeriodo();
+
+        return "Relatório de Estacionamento:\n" +
+                "Total de carros que entraram: " + totalCarrosEntraram + "\n" +
+                "Total de carros que saíram: " + totalCarrosSairam + "\n" +
+                "Carros estacionados agora: " + carrosEstacionadosAgora + "\n" +
+                "Pagamento total acumulado no período: R$ " + pagamentoPeriodo;
+    }
+
 }

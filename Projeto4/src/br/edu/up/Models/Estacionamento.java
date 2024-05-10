@@ -1,10 +1,13 @@
 package br.edu.up.Models;
 
 public class Estacionamento {
-    private static final int NUM_VAGAS = 10; // nunca muda o valor
+    private static final int NUM_VAGAS = 5; // nunca muda o valor
     private Carro[] carrosEstacionados;
     private int numCarros;
     private double totalPagamentos;
+    private int totalCarrosEntraram;
+    private int totalCarrosSairam;
+
 
     public Estacionamento() {
         carrosEstacionados = new Carro[NUM_VAGAS];
@@ -16,6 +19,7 @@ public class Estacionamento {
             carrosEstacionados[numCarros] = carro;
             numCarros++;
             totalPagamentos += 5.00;
+            totalCarrosEntraram++;
             return true;
         }
         return false;
@@ -30,6 +34,7 @@ public class Estacionamento {
                     carrosEstacionados[j] = carrosEstacionados[j + 1];
                 }
                 numCarros--;
+                totalCarrosSairam++;
                 return carroSaida;
             }
         }
@@ -43,4 +48,13 @@ public class Estacionamento {
     public double calcularPagamentoPeriodo() {
         return totalPagamentos;
     }
+
+    public int getTotalCarrosEntraram() {
+        return totalCarrosEntraram;
+    }
+
+    public int getTotalCarrosSairam() {
+        return totalCarrosSairam;
+    }
+    
 }
