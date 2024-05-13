@@ -23,6 +23,8 @@ public class AeroportoView {
             System.out.println("1. Adicionar Passageiro");
             System.out.println("2. Adicionar Tripulação");
             System.out.println("3. Sair");
+            System.out.println("4. Listar Passageiro");
+            System.out.println("5. Listar Tripulaçao");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine();
@@ -36,6 +38,12 @@ public class AeroportoView {
                     break;
                 case 3:
                     System.out.println("Saindo...");
+                    break;
+                case 4:
+                    listarPassageiros();
+                    break;
+                case 5:
+                    listarTripulaçao();
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
@@ -70,5 +78,17 @@ public class AeroportoView {
         Tripulacao tripulacao = new Tripulacao(nome, rg, identificacaoAeronautica, matriculaFuncionario);
         controller.adicionarTripulacao(tripulacao);
         System.out.println("Tripulação adicionada com sucesso!");
+    }
+
+    private void listarPassageiros() {
+        System.out.println("Listando Passageiros");
+        System.out.println("---------------------------------------------------");
+        controller.listarPassageiro();
+    }
+
+    private void listarTripulaçao() {
+        System.out.println("Listando Tripulação");
+        System.out.println("---------------------------------------------------");
+        controller.listarTripulacao();
     }
 }

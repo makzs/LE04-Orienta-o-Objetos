@@ -33,4 +33,27 @@ public class AeroportoController {
             System.out.println("Limite de tripulação atingido!");
         }
     }
+
+    public void listarPassageiro() {
+        for (Passageiro passageiro : passageiros) {
+            if (passageiro != null) {
+                System.out.println("Identificador de Bagagem: " + passageiro.getIdentificadorBagagem());
+                System.out.println("RG: " + passageiro.getRg());
+                System.out.println("Passagem: " + passageiro.getPassagem());
+                System.out.println("-----------------------------------");
+            }
+        }
+    }
+
+    public void listarTripulacao() {
+        for (var trip : tripulacao) {
+            if (trip != null) {
+                System.out.println("Matricula do Funcionarios: " + trip.getMatriculaFuncionario());
+                System.out.println("RG: " + trip.getRg());
+                System.out.println("ID aeronautica: " + trip.getIdentificacaoAeronautica());
+                System.out.println("-----------------------------------");
+            }
+        }
+    }
+
 }
