@@ -74,6 +74,7 @@ public class ControllerEventos {
             if (eventos[i] != null){
                 if (eventos[i].getNome().equals(nomeEvento)){
                     eventos[i].adicionarReserva(reserva);
+                    System.out.println("Reserva incluida com sucesso");
                 }
                 else{
                     if (i == eventos.length){
@@ -92,17 +93,63 @@ public class ControllerEventos {
                     for (Reserva reserva : eventos[i].getReservas()) {
                         if (reserva != null) {
                             System.out.println("Nome: " + reserva.getNome() + ", Quantidade de pessoas: " + reserva.getQtdPessoas() + ", Data: " + reserva.getData() + ", Valor: " + reserva.getValor());
+                            System.out.println("Reservas listada com sucesso");
                         }
                     }
                 }
                 else{
                     if (i == eventos.length){
-                        System.out.println("Evento nao encontrado!");
+                        System.out.println("Reserva nao encontrada!");
                     }
                 }
             }
         }
     }
+
+    public void AlterarReserva(String nomeEvento, String nomeReserva, Reserva novaReserva){
+        for (int i = 0; i < eventos.length; i++) {
+            if (eventos[i] != null){
+                if (eventos[i].getNome().equals(nomeEvento)){
+                    for (Reserva reserva : eventos[i].getReservas()){
+                        if (reserva != null){
+                            if (reserva.getNome().equals(nomeReserva)){
+                                reserva.setNome(novaReserva.getNome());
+                                reserva.setQtdPessoas(novaReserva.getQtdPessoas());
+                                reserva.setData(novaReserva.getData());
+                                reserva.setValor(novaReserva.getValor());
+                                System.out.println("reserva alterada com sucesso!");
+                            }
+                        }
+                    }
+
+                }
+                else{
+                    if (i == eventos.length){
+                        System.out.println("Reserva nao encontrada!");
+                    }
+                }
+            }
+        }
+    }
+
+    public void ExcluirReserva(String nomeEvento, String nomeReserva){
+        for (int i = 0; i < eventos.length; i++) {
+            if (eventos[i] != null && eventos[i].getNome().equals(nomeEvento)) {
+                Reserva[] reservas = eventos[i].getReservas();
+                for (int j = 0; j < reservas.length; j++) {
+                    if (reservas[j] != null && reservas[j].getNome().equals(nomeReserva)) {
+                        reservas[j] = null;
+                        System.out.println("Reserva excluída com sucesso!");
+                        return;
+                    }
+                }
+                System.out.println("Reserva não encontrada!");
+                return;
+            }
+        }
+        System.out.println("Evento não encontrado!");
+    }
+    
 
     
 
