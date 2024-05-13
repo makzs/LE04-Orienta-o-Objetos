@@ -138,26 +138,47 @@ public class Menu {
             String nomeEvento = leitor.nextLine();
 
             System.out.println("Informe o nome da reserva: ");
-                String novonome = leitor.nextLine();
-                System.out.println("Informe a data da reserva: ");
-                String novadata = leitor.nextLine();
-                System.out.println("Informe a quantidade de pessoas: ");
-                int novaQtdPessoas = leitor.nextInt();
-                System.out.println("Informe o valor da reserva: ");
-                double novoValor = leitor.nextDouble();
+            String novonome = leitor.nextLine();
+            System.out.println("Informe a data da reserva: ");
+            String novadata = leitor.nextLine();
+            System.out.println("Informe a quantidade de pessoas: ");
+            int novaQtdPessoas = leitor.nextInt();
+            System.out.println("Informe o valor da reserva: ");
+            double novoValor = leitor.nextDouble();
 
-                Reserva novaReserva = new Reserva(novonome, novaQtdPessoas, novadata, novoValor);
-                controleEventos.IncluirReserva(nomeEvento, novaReserva);
+            Reserva novaReserva = new Reserva(novonome, novaQtdPessoas, novadata, novoValor);
+            controleEventos.IncluirReserva(nomeEvento, novaReserva);
+
+            System.out.println("Retornando ao menu principal...");
+            mostrar();
+            break;
+            case (2):
+                leitor.nextLine();
+                System.out.println("Informe o nome do evento que deseja alterar uma reserva: ");
+                String nomeEventoAlterar = leitor.nextLine();
+                System.out.println("Informe o nome da reserva que deseja alterar: ");
+                String nomeReservaAlterar = leitor.nextLine();
+
+                System.out.println("Informe a alteração da reserva: ");
+
+                System.out.println("Informe o nome da reserva: ");
+                String nomeAlterar = leitor.nextLine();
+                System.out.println("Informe a data da reserva: ");
+                String dataAlterar = leitor.nextLine();
+                System.out.println("Informe a quantidade de pessoas: ");
+                int qtdPessoasAlterar = leitor.nextInt();
+                System.out.println("Informe o valor da reserva: ");
+                double valorAlterar = leitor.nextDouble();
+
+                Reserva reservaAlterar = new Reserva(nomeAlterar, qtdPessoasAlterar, dataAlterar, valorAlterar);
+                controleEventos.AlterarReserva(nomeEventoAlterar, nomeReservaAlterar, reservaAlterar);
 
                 System.out.println("Retornando ao menu principal...");
                 mostrar();
                 break;
-            case (2):
-                // metodo 2
-                break;
             case (3):
                 leitor.nextLine();
-                System.out.println("Informe o nome do evento que deseja inserir uma reserva: ");
+                System.out.println("Informe o nome do evento que deseja listar as reservas: ");
                 String nomeEventoListar = leitor.nextLine();
 
                 controleEventos.ListarReserva(nomeEventoListar);
@@ -165,7 +186,16 @@ public class Menu {
                 mostrar();
                 break;
             case (4):
-                // metodo 4 
+                leitor.nextLine();
+                System.out.println("Informe o nome do evento que deseja excluir uma reserva: ");
+                String nomeEventoExcluir = leitor.nextLine();
+                System.out.println("Informe o nome da reserva que deseja excluir: ");
+                String nomeReservaExcluir = leitor.nextLine();
+
+                controleEventos.ExcluirReserva(nomeEventoExcluir, nomeReservaExcluir);
+
+                System.out.println("Retornando ao menu principal...");
+                mostrar();
                 break;
             case (5):
                 System.out.println("Retornando ao menu principal");
