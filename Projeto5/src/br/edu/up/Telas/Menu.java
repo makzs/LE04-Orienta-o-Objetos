@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import br.edu.up.Controlers.ControllerEventos;
 import br.edu.up.Models.Evento;
+import br.edu.up.Models.Reserva;
 
 public class Menu {
     ControllerEventos controleEventos = new ControllerEventos(20, 10);
@@ -132,13 +133,36 @@ public class Menu {
 
         switch (opcao){
             case (1):
-                // metodo 1
+            leitor.nextLine();
+            System.out.println("Informe o nome do evento que deseja inserir uma reserva: ");
+            String nomeEvento = leitor.nextLine();
+
+            System.out.println("Informe o nome da reserva: ");
+                String novonome = leitor.nextLine();
+                System.out.println("Informe a data da reserva: ");
+                String novadata = leitor.nextLine();
+                System.out.println("Informe a quantidade de pessoas: ");
+                int novaQtdPessoas = leitor.nextInt();
+                System.out.println("Informe o valor da reserva: ");
+                double novoValor = leitor.nextDouble();
+
+                Reserva novaReserva = new Reserva(novonome, novaQtdPessoas, novadata, novoValor);
+                controleEventos.IncluirReserva(nomeEvento, novaReserva);
+
+                System.out.println("Retornando ao menu principal...");
+                mostrar();
                 break;
             case (2):
                 // metodo 2
                 break;
             case (3):
-                // metodo 3
+                leitor.nextLine();
+                System.out.println("Informe o nome do evento que deseja inserir uma reserva: ");
+                String nomeEventoListar = leitor.nextLine();
+
+                controleEventos.ListarReserva(nomeEventoListar);
+                System.out.println("Retornando ao menu principal...");
+                mostrar();
                 break;
             case (4):
                 // metodo 4 
