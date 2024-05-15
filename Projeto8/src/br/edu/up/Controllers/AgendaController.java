@@ -1,11 +1,11 @@
-package br.up.edu.Controllers;
+package br.edu.up.Controllers;
 
 import java.util.Random;
 
-import br.up.edu.Models.Agenda;
-import br.up.edu.Models.Comercial;
-import br.up.edu.Models.Contato;
-import br.up.edu.Models.Pessoal;
+import br.edu.up.Models.Agenda;
+import br.edu.up.Models.Comercial;
+import br.edu.up.Models.Contato;
+import br.edu.up.Models.Pessoal;
 
 public class AgendaController {
     private Agenda agenda;

@@ -1,4 +1,4 @@
-package br.up.edu.Models;
+package br.edu.up.Models;
 
 import java.util.ArrayList;
 import java.util.List;

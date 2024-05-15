@@ -1,8 +1,8 @@
-package br.up.edu.Views;
+package br.edu.up.Views;
 
 import java.util.Scanner;
 
-import br.up.edu.Controllers.AgendaController;
+import br.edu.up.Controllers.AgendaController;
 
 public class AgendaView {
     private AgendaController agendaController;

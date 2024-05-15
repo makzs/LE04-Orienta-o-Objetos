@@ -1,7 +1,7 @@
-package br.up.edu.Controllers;
+package br.edu.up.Controllers;
 
-import br.up.edu.Models.Passageiro;
-import br.up.edu.Models.Tripulacao;
+import br.edu.up.Models.Passageiro;
+import br.edu.up.Models.Tripulacao;
 
 public class AeroportoController {
     private Passageiro[] passageiros;

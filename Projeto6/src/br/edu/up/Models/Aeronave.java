@@ -1,4 +1,4 @@
-package br.up.edu.Models;
+package br.edu.up.Models;
 
 public class Aeronave {
     private String codigo;

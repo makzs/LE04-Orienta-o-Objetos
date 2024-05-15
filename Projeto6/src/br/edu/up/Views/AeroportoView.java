@@ -1,11 +1,11 @@
-package br.up.edu.Views;
+package br.edu.up.Views;
 
 import java.util.Scanner;
 
-import br.up.edu.Controllers.AeroportoController;
-import br.up.edu.Models.Passageiro;
-import br.up.edu.Models.Passagem;
-import br.up.edu.Models.Tripulacao;
+import br.edu.up.Controllers.AeroportoController;
+import br.edu.up.Models.Passageiro;
+import br.edu.up.Models.Passagem;
+import br.edu.up.Models.Tripulacao;
 
 public class AeroportoView {
     private Scanner scanner;

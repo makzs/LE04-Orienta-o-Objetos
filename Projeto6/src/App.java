@@ -1,4 +1,4 @@
-import br.up.edu.Views.AeroportoView;
+import br.edu.up.Views.AeroportoView;
 
 public class App {
     public static void main(String[] args) throws Exception {
