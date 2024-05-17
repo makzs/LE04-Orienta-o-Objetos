@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public void mostar(){
+    public void mostrar(){
         Scanner leitor = new Scanner(System.in);
 
         System.out.println("------------------------------");
@@ -20,13 +20,13 @@ public class Menu {
 
         switch (opcao){
             case 1:
-            // menu professores
+            mostrarProfessores();
             break;
             case 2:
-            // menu alunos
+            mostrarAlunos();
             break;
             case 3:
-            // menu disciplinas
+            mostrarDisciplinas();
             break;
             default:
             System.out.println("Opção invalida!");
@@ -44,7 +44,7 @@ public class Menu {
         System.out.println("------------------------------");
 
         System.out.println("1.Listar Professores");
-        System.out.println("2.Registrar Professor");
+        System.out.println("2.Verificar Professor");
         System.out.println("3.Sair");
         System.out.println("------------------------------");
         System.out.println("Informe a opção: ");
@@ -55,10 +55,10 @@ public class Menu {
             // menu listar
             break;
             case 2:
-            // menu registrar
+            // menu verificar
             break;
             case 3:
-            // sair
+            mostrar();
             break;
             default:
             System.out.println("Opção invalida!");
@@ -76,7 +76,7 @@ public class Menu {
         System.out.println("------------------------------");
 
         System.out.println("1.Listar Alunos");
-        System.out.println("2.Registrar Aluno");
+        System.out.println("2.Verificar Aluno");
         System.out.println("3.Sair");
         System.out.println("------------------------------");
         System.out.println("Informe a opção: ");
@@ -87,10 +87,10 @@ public class Menu {
             // menu listar
             break;
             case 2:
-            // menu registrar
+            // menu verificar
             break;
             case 3:
-            // sair
+            mostrar();
             break;
             default:
             System.out.println("Opção invalida!");
@@ -108,8 +108,8 @@ public class Menu {
         System.out.println("------------------------------");
 
         System.out.println("1.Listar Disciplinas");
-        System.out.println("2.Registrar Disciplina");
-        System.out.println("3.Sair");
+        System.out.println("3.Verificar disciplinas");
+        System.out.println("4.Sair");
         System.out.println("------------------------------");
         System.out.println("Informe a opção: ");
         int opcao = leitor.nextInt();
@@ -119,10 +119,10 @@ public class Menu {
             // menu listar
             break;
             case 2:
-            // menu registrar
+            // menu verificar
             break;
             case 3:
-            // sair
+            mostrar();
             break;
             default:
             System.out.println("Opção invalida!");
