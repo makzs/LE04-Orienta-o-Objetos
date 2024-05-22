@@ -1,8 +1,14 @@
 package br.edu.up.Telas;
 
 import java.util.Scanner;
+import br.edu.up.Controllers.EscolaController;
+import br.edu.up.Models.*;
+
 
 public class Menu {
+
+    EscolaController controller = new EscolaController();
+    DadosEscola dadosEscola = controller.obterDadosEscola();
 
     public void mostrar(){
         Scanner leitor = new Scanner(System.in);
@@ -52,10 +58,16 @@ public class Menu {
 
         switch (opcao){
             case 1:
-            // menu listar
+            for (Professor p : dadosEscola.getProfessores()) {
+                System.out.println(p);
+            }
             break;
             case 2:
-            // menu verificar
+            leitor.nextLine();
+            System.out.println("Informe o nome do professor que deseja verificar: ");
+            String professorVerificar = leitor.nextLine();
+
+            controller.verificarDisciplinasDoProfessor(professorVerificar);
             break;
             case 3:
             mostrar();
@@ -84,10 +96,38 @@ public class Menu {
 
         switch (opcao){
             case 1:
-            // menu listar
+            for (Aluno[] c : dadosEscola.getAlunosPorCurso()) {
+                for (Aluno aluno : c) {
+                    System.out.println(aluno);
+                }
+            }
             break;
             case 2:
-            // menu verificar
+            leitor.nextLine();
+            System.out.println("Informe a disciplina que deseja verificar: ");
+            String disciplinaVerificar = leitor.nextLine();
+            System.out.println("Informe o nome do aluno que deseja verificar: ");
+            String alunoVerificado = leitor.nextLine();
+
+            for (Disciplina[] c : dadosEscola.getDisciplinasPorCurso()) {
+                for (Disciplina disciplina : c) {
+                    if (disciplina.getNome().equals(disciplinaVerificar)){
+                        for (Aluno alunos : disciplina.getAlunos()) {
+                            if (alunos.getNome().equals(alunoVerificado)){
+                                if (disciplina.estaAprovado(alunos)){
+                                    System.out.println(alunos.getNome() + " Aprovado!");
+                                    break;
+                                }
+                                else{
+                                    System.out.println(alunos.getNome() + " Reprovado!");
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
             break;
             case 3:
             mostrar();
@@ -100,6 +140,7 @@ public class Menu {
         leitor.close();
     }
 
+
     public void mostrarDisciplinas(){
         Scanner leitor = new Scanner(System.in);
 
@@ -108,18 +149,29 @@ public class Menu {
         System.out.println("------------------------------");
 
         System.out.println("1.Listar Disciplinas");
-        System.out.println("3.Verificar disciplinas");
-        System.out.println("4.Sair");
+        System.out.println("2.Verificar disciplinas");
+        System.out.println("3.Sair");
         System.out.println("------------------------------");
         System.out.println("Informe a opção: ");
         int opcao = leitor.nextInt();
 
         switch (opcao){
             case 1:
-            // menu listar
+            for (Disciplina[] c : dadosEscola.getDisciplinasPorCurso()) {
+                for (Disciplina d : c) {
+                    System.out.println(d);
+                    System.out.println("-------------------------------\n");
+                }
+            }
             break;
             case 2:
-            // menu verificar
+            leitor.nextLine();
+            System.out.println("Informe o curso que deseja verificar: ");
+            String cursoVerificar = leitor.nextLine();
+            System.out.println("Informe o codigo da Disciplina que deseja verificar: ");
+            String cursoVerificarCod = leitor.nextLine();
+
+            controller.verificarDisciplina(cursoVerificar, cursoVerificarCod);
             break;
             case 3:
             mostrar();

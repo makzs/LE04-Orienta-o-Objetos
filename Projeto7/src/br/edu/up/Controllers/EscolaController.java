@@ -2,19 +2,28 @@ package br.edu.up.Controllers;
 
 import br.edu.up.Models.Aluno;
 import br.edu.up.Models.Competencia;
+import br.edu.up.Models.DadosEscola;
 import br.edu.up.Models.Disciplina;
 import br.edu.up.Models.Professor;
 
 public class EscolaController {
 
-    private Aluno[] criarAlunosMedicina(){
+    private Aluno[] criarAlunosMedicina() {
         Aluno[] alunos = new Aluno[6];
 
-        Aluno aluno1 = new Aluno("1231", "matheus", "001", "medicina", "noturno", 2020);
+        Competencia[] competenciasAluno1 = {
+            new Competencia("cardiologia", true),
+            new Competencia("anatomia", true),
+            new Competencia("sistemas do corpo humano", true),
+            new Competencia("boas praticas", false),
+            new Competencia("pesquisa", false)
+        };
+        Aluno aluno1 = new Aluno("1231", "matheus", "001", "medicina", "noturno", 2020, competenciasAluno1);
+
         Aluno aluno2 = new Aluno("1232", "maria", "002", "medicina", "matutino", 2020);
         Aluno aluno3 = new Aluno("1233", "lucas", "003", "medicina", "noturno", 2020);
         Aluno aluno4 = new Aluno("1234", "marcia", "004", "medicina", "noturno", 2021);
-        Aluno aluno5 = new Aluno("1235", "falvio", "005", "medicina", "matutino", 2022);
+        Aluno aluno5 = new Aluno("1235", "flavio", "005", "medicina", "matutino", 2022);
         Aluno aluno6 = new Aluno("1236", "pedro", "006", "medicina", "noturno", 2022);
 
         alunos[0] = aluno1;
@@ -27,7 +36,7 @@ public class EscolaController {
         return alunos;
     }
 
-    private Aluno[] criarAlunosEngenharia(){
+    private Aluno[] criarAlunosEngenharia() {
         Aluno[] alunos = new Aluno[6];
 
         Aluno aluno1 = new Aluno("12311", "lucio", "001", "engenharia", "noturno", 2020);
@@ -47,24 +56,25 @@ public class EscolaController {
         return alunos;
     }
 
-    private Professor[] criarProfessoresPadrao(){
+    private Professor[] criarProfessoresPadrao() {
         Professor[] professores = new Professor[3];
 
         Professor professor1 = new Professor("3211", "Jorge", "3211", "001", "Doutor", "UFSP", "TCC Medicina", 1994);
-        Professor professor2 = new Professor("3212", "Antonio", "3212", "002", "Mestre", "UP", "TCC engenharia civil", 2001);
-        Professor professor3 = new Professor("3213", "Vanessa", "3213", "003", "Doutora", "UFPR", "TCC odontologia", 1997);
+        Professor professor2 = new Professor("3212", "Antonio", "3212", "002", "Mestre", "UP", "TCC engenharia civil",
+                2001);
+        Professor professor3 = new Professor("3213", "Vanessa", "3213", "003", "Doutora", "UFPR", "TCC odontologia",
+                1997);
 
         professores[0] = professor1;
         professores[1] = professor2;
         professores[2] = professor3;
-        
 
         return professores;
     }
 
-    public void inicializarPadroes(){
+    private Disciplina[] inicialiazrDisciplinaMedicina() {
         Professor[] professores = criarProfessoresPadrao();
-        
+
         // curso medicina
         Aluno[] alunosMedicina = criarAlunosMedicina();
         Disciplina[] disciplinasMedicina = new Disciplina[3];
@@ -84,7 +94,8 @@ public class EscolaController {
         competenciaMedicinaInicial[3] = competenciaMI4;
         competenciaMedicinaInicial[4] = competenciaMI5;
 
-        Disciplina medicinaInicial = new Disciplina("001", "medicinaInicial", "medicina", competenciaMedicinaInicial, professores[0], alunosMedicina);
+        Disciplina medicinaInicial = new Disciplina("001", "medicinaInicial", "medicina", competenciaMedicinaInicial,
+                professores[0], alunosMedicina);
 
         // disciplina 2
         Competencia[] competenciaMedicinaIntermediaria = new Competencia[5];
@@ -101,9 +112,10 @@ public class EscolaController {
         competenciaMedicinaIntermediaria[3] = competenciaMIT4;
         competenciaMedicinaIntermediaria[4] = competenciaMIT5;
 
-        Disciplina medicinaIntermediaria = new Disciplina("002", "medicinaIntermediaria", "medicina", competenciaMedicinaIntermediaria, professores[0], alunosMedicina);
+        Disciplina medicinaIntermediaria = new Disciplina("002", "medicinaIntermediaria", "medicina",
+                competenciaMedicinaIntermediaria, professores[0], alunosMedicina);
 
-        //disciplina 3
+        // disciplina 3
         Competencia[] competenciaMedicinaAvançada = new Competencia[5];
 
         Competencia competenciaMA1 = new Competencia("Estudo do Sangue", true);
@@ -118,13 +130,19 @@ public class EscolaController {
         competenciaMedicinaAvançada[3] = competenciaMA4;
         competenciaMedicinaAvançada[4] = competenciaMA5;
 
-        Disciplina medicinaAvançada = new Disciplina("003", "medicinaAvançada", "medicina", competenciaMedicinaAvançada, professores[0], alunosMedicina);
+        Disciplina medicinaAvançada = new Disciplina("003", "medicinaAvançada", "medicina", competenciaMedicinaAvançada,
+                professores[0], alunosMedicina);
 
         // adiciona disciplinas no curso
         disciplinasMedicina[0] = medicinaInicial;
         disciplinasMedicina[1] = medicinaIntermediaria;
         disciplinasMedicina[2] = medicinaAvançada;
 
+        return disciplinasMedicina;
+    }
+
+    private Disciplina[] inicializarDisciplinaEngenharia() {
+        Professor[] professores = criarProfessoresPadrao();
 
         // Curso Engenharia
         Aluno[] alunosEngenharia = criarAlunosEngenharia();
@@ -145,8 +163,8 @@ public class EscolaController {
         competenciaEngenhariaInicial[3] = competenciaEI4;
         competenciaEngenhariaInicial[4] = competenciaEI5;
 
-        Disciplina engenhariaInicial = new Disciplina("004", "EngenhariaInicial", "Engenharia", competenciaEngenhariaInicial, professores[1], alunosEngenharia);
-
+        Disciplina engenhariaInicial = new Disciplina("004", "EngenhariaInicial", "Engenharia",
+                competenciaEngenhariaInicial, professores[1], alunosEngenharia);
 
         // Disciplina 2
         Competencia[] competenciaEngenhariaIntermediaria = new Competencia[5];
@@ -163,8 +181,8 @@ public class EscolaController {
         competenciaEngenhariaIntermediaria[3] = competenciaEIT4;
         competenciaEngenhariaIntermediaria[4] = competenciaEIT5;
 
-        Disciplina engenhariaIntermediraria = new Disciplina("005", "EngenhariaIntermediaria", "Engenharia", competenciaEngenhariaIntermediaria, professores[1], alunosEngenharia);
-
+        Disciplina engenhariaIntermediraria = new Disciplina("005", "EngenhariaIntermediaria", "Engenharia",
+                competenciaEngenhariaIntermediaria, professores[1], alunosEngenharia);
 
         // Disciplina 3
         Competencia[] competenciaEngenhariaAvançada = new Competencia[5];
@@ -181,12 +199,85 @@ public class EscolaController {
         competenciaEngenhariaAvançada[3] = competenciaEA4;
         competenciaEngenhariaAvançada[4] = competenciaEA5;
 
-        Disciplina engenhariaAvançada = new Disciplina("006", "EngenhariaAvançada", "Engenharia", competenciaEngenhariaAvançada, professores[1], alunosEngenharia);
+        Disciplina engenhariaAvançada = new Disciplina("006", "EngenhariaAvançada", "Engenharia",
+                competenciaEngenhariaAvançada, professores[1], alunosEngenharia);
 
         // adiciona disciplinas no curso
         disciplinasEngenharia[0] = engenhariaInicial;
         disciplinasEngenharia[1] = engenhariaIntermediraria;
         disciplinasEngenharia[2] = engenhariaAvançada;
+
+        return disciplinasEngenharia;
+    }
+
+    public DadosEscola obterDadosEscola() {
+        Professor[] professores = criarProfessoresPadrao();
+
+        Aluno[] alunosMedicina = criarAlunosMedicina();
+        Aluno[] alunosEngenharia = criarAlunosEngenharia();
+        Aluno[][] alunosPorCurso = { alunosMedicina, alunosEngenharia };
+
+        Disciplina[] disciplinasMedicina = inicialiazrDisciplinaMedicina();
+        Disciplina[] disciplinasEngenharia = inicializarDisciplinaEngenharia();
+        Disciplina[][] disciplinasPorCurso = { disciplinasMedicina, disciplinasEngenharia };
+
+        return new DadosEscola(professores, alunosPorCurso, disciplinasPorCurso);
+    }
+
+    public void verificarDisciplinasDoProfessor(String nomeProfessor) {
+        boolean encontrouProfessor = false;
+
+        for (Disciplina disciplina : inicialiazrDisciplinaMedicina()) {
+            if (disciplina.getProfessor().getNome().equalsIgnoreCase(nomeProfessor)) {
+                encontrouProfessor = true;
+                System.out.println("Disciplina: " + disciplina.getNome());
+                System.out.println("Código: " + disciplina.getId());
+                System.out.println("---------------------------");
+            }
+        }
+
+        for (Disciplina disciplina : inicializarDisciplinaEngenharia()) {
+            if (disciplina.getProfessor().getNome().equalsIgnoreCase(nomeProfessor)) {
+                encontrouProfessor = true;
+                System.out.println("Disciplina: " + disciplina.getNome());
+                System.out.println("Código: " + disciplina.getId());
+                System.out.println("---------------------------");
+            }
+        }
+
+        if (!encontrouProfessor) {
+            System.out.println("Professor não encontrado ou não está aplicando nenhuma disciplina.");
+        }
+    }
+
+    public void verificarDisciplina(String curso, String codigoDisciplina) {
+        Disciplina[] disciplinas;
+        if (curso.equalsIgnoreCase("medicina")) {
+            disciplinas = inicialiazrDisciplinaMedicina();
+        } else if (curso.equalsIgnoreCase("engenharia")) {
+            disciplinas = inicializarDisciplinaEngenharia();
+        } else {
+            System.out.println("Curso não reconhecido.");
+            return;
+        }
+
+        for (Disciplina disciplina : disciplinas) {
+            if (disciplina.getId().equals(codigoDisciplina)) {
+                System.out.println("Detalhes da Disciplina:");
+                System.out.println("Código: " + disciplina.getId());
+                System.out.println("Nome: " + disciplina.getNome());
+                System.out.println("Área: " + disciplina.getCurriculo());
+                System.out.println("Professor: " + disciplina.getProfessor().getNome());
+
+                Aluno[] alunos = disciplina.getAlunos();
+                System.out.println("Alunos:");
+                for (Aluno aluno : alunos) {
+                    System.out.println("- " + aluno.getNome());
+                }
+                return;
+            }
+        }
+        System.out.println("Disciplina não encontrada.");
     }
 
 }

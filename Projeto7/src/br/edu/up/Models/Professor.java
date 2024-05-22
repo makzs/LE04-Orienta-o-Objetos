@@ -16,6 +16,22 @@ public class Professor extends Pessoa{
         this.anoConclusao = anoConclusao;
     }
 
+    
+    @Override
+    public String toString() {
+        return "Professor: " +
+                "RG='" + getRg() + '\'' +
+                ", Nome='" + getNome() + '\'' +
+                ", Matrícula='" + getMatricula() + '\'' +
+                ", Titulação='" + nomeTitulo + '\'' +
+                ", Instituição de Formação='" + nomeInstituicao + '\'' +
+                ", TCC='" + tituloTCC + '\'' +
+                ", Ano de Conclusão=" + anoConclusao;
+    }
+    
+
+
+
     public String getId() {
         return id;
     }

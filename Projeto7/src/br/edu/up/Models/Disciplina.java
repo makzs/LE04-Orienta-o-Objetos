@@ -10,7 +10,33 @@ public class Disciplina {
 
     // verificar se esta aprovado
     public boolean estaAprovado(Aluno aluno){
-        return true;
+        Competencia[] competenciasAluno = aluno.getCompetencias();
+
+    int obrigatoriasConcluidas = 0;
+    int opcionaisConcluidas = 0;
+
+    for (Competencia competencia : competencias) {
+        if (competencia.isNecessario()) {
+            for (Competencia competenciaAluno : competenciasAluno) {
+                if (competencia.getNome().equalsIgnoreCase(competenciaAluno.getNome())) {
+                    obrigatoriasConcluidas++;
+                    break;
+                }
+            }
+        } else {
+            for (Competencia competenciaAluno : competenciasAluno) {
+                if (competencia.getNome().equalsIgnoreCase(competenciaAluno.getNome())) {
+                    opcionaisConcluidas++;
+                    break;
+                }
+            }
+        }
+    }
+
+    double porcentagemObrigatorias = (double) obrigatoriasConcluidas / competencias.length * 100;
+    double porcentagemOpcionais = (double) opcionaisConcluidas / competencias.length * 100;
+
+    return porcentagemObrigatorias >= 100 && porcentagemOpcionais >= 50;
     }
 
     public Disciplina(String id, String nome, String curriculo, Competencia[] competencias, Professor professor,
@@ -22,6 +48,14 @@ public class Disciplina {
         this.professor = professor;
         this.alunos = alunos;
     }
+
+    @Override
+public String toString() {
+    return "Disciplina: " +
+            "Código='" + id + '\'' +
+            ", Nome='" + nome + '\'' +
+            ", Área='" + curriculo + '\'';
+}
 
     public String getId() {
         return id;
