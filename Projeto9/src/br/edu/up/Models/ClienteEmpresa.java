@@ -5,9 +5,8 @@ public class ClienteEmpresa extends Cliente{
     private String inscEstadual;
     private int anoFundacao;
     
-    public ClienteEmpresa(String nome, String telefone, String email, Endereco endereco, Double vlrMaxCredito,
-            Double vlrEmprestado, String cnpj, String inscEstadual, int anoFundacao) {
-        super(nome, telefone, email, endereco, vlrMaxCredito, vlrEmprestado);
+    public ClienteEmpresa(String nome, String telefone, String email, Endereco endereco, String cnpj, String inscEstadual, int anoFundacao) {
+        super(nome, telefone, email, endereco);
         this.cnpj = cnpj;
         this.inscEstadual = inscEstadual;
         this.anoFundacao = anoFundacao;

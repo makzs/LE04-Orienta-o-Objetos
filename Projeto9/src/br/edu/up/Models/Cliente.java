@@ -16,14 +16,11 @@ public abstract class Cliente {
         return valor;
     }
     
-    public Cliente(String nome, String telefone, String email, Endereco endereco, Double vlrMaxCredito,
-            Double vlrEmprestado) {
+    public Cliente(String nome, String telefone, String email, Endereco endereco) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.endereco = endereco;
-        this.vlrMaxCredito = vlrMaxCredito;
-        this.vlrEmprestado = vlrEmprestado;
     }
     public String getNome() {
         return nome;

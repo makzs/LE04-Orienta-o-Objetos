@@ -5,11 +5,15 @@ public class ClientePessoa extends Cliente {
     private double peso;
     private double altura;
 
-    public ClientePessoa( String nome, String telefone, String email, Endereco endereco, Double vlrMaxCredito, Double vlrEmprestado, String cpf, double peso, double altura) {
-        super(nome, telefone, email, endereco, vlrMaxCredito, vlrEmprestado);
+    public ClientePessoa( String nome, String telefone, String email, Endereco endereco, String cpf, double peso, double altura) {
+        super(nome, telefone, email, endereco);
         this.cpf = cpf;
         this.peso = peso;
         this.altura = altura;
+    }
+
+    public String clientePessoaToCSV(){
+        return getNome() + ";" + getTelefone() + ";" + getEmail() + ";" + getEndereco() + ";" + getCpf() + ";" + getPeso() + ";" + getAltura(); 
     }
 
     

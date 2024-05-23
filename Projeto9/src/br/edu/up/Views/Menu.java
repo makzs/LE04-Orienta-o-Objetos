@@ -2,7 +2,12 @@ package br.edu.up.Views;
 
 import java.util.Scanner;
 
+import br.edu.up.Models.*;
+import br.edu.up.Controllers.*;
+
 public class Menu {
+
+    ClientesController controller = new ClientesController();
     
     public void mostrar(){
         Scanner leitor = new Scanner(System.in);
@@ -22,19 +27,19 @@ public class Menu {
 
         switch (opcao) {
             case 1:
-                // menu inclusao
+                menuInclusao();
                 break;
             case 2:
-                // menu dados
+                menuDados();
                 break;
             case 3:
-                // menu emprestimo
+                menuEmprestar();
                 break;
             case 4:
-                // menu devolução
+                menuDevolucao();
                 break;
             case 5:
-                // encerrar programa
+                System.out.println("Encerrando Programa...");
                 break;
             default:
             System.out.println("Opção Invalida!");
@@ -60,7 +65,51 @@ public class Menu {
 
         switch (opcao) {
             case 1:
-                // incluir cliente pessoa
+                System.out.println("\n------------------------------------");
+                System.out.println("Cadastro de novo Cliente");
+                System.out.println("------------------------------------\n");
+
+                leitor.nextLine();
+                System.out.println("Informe o nome do novo Cliente: ");
+                String nome = leitor.nextLine();
+                System.out.println("Informe o telefone do novo Cliente: ");
+                String telefone = leitor.nextLine();
+                System.out.println("Informe o email do novo Cliente: ");
+                String email = leitor.nextLine();
+                System.out.println("Informe o cpf do novo Cliente: ");
+                String cpf = leitor.nextLine();
+                System.out.println("Informe o peso do novo Cliente: ");
+                Double peso = leitor.nextDouble();
+                System.out.println("Informe o altura do novo Cliente: ");
+                Double altura = leitor.nextDouble();
+
+                System.out.println("\n------------------------------------");
+                System.out.println("Cadastro de Endereço do novo Cliente");
+                System.out.println("------------------------------------\n");
+
+                leitor.nextLine();
+                System.out.println("Informe a UF (unidade federal): ");
+                String uf = leitor.nextLine();
+                System.out.println("Informe o nome da cidade: ");
+                String nomeCidade = leitor.nextLine();
+
+                Cidade novaCidade = new Cidade(nomeCidade, uf);
+
+                System.out.println("Informe o nome da rua: ");
+                String rua = leitor.nextLine();
+                System.out.println("Informe o numero: ");
+                String numero = leitor.nextLine();
+                System.out.println("Informe o bairro: ");
+                String bairro = leitor.nextLine();
+                System.out.println("Informe o cep: ");
+                String cep = leitor.nextLine();
+
+                Endereco novoEndereco = new Endereco(rua, numero, bairro, cep, novaCidade);
+                ClientePessoa novoClientePessoa = new ClientePessoa(nome, telefone, email, novoEndereco, cpf, peso, altura);
+
+                controller.adicionarCliente(novoClientePessoa);
+                System.out.println("Cliente Adicionado com Sucesso");
+
                 break;
             case 2:
                 // incluir cliente empresa
