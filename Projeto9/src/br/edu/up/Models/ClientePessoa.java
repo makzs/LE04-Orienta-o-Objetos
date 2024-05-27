@@ -12,10 +12,9 @@ public class ClientePessoa extends Cliente {
         this.altura = altura;
     }
 
-    public String clientePessoaToCSV(){
-        return getNome() + ";" + getTelefone() + ";" + getEmail() + ";" + getEndereco() + ";" + getCpf() + ";" + getPeso() + ";" + getAltura(); 
+    public String clientePessoaToCSV() {
+        return nome + "," + telefone + "," + email + "," + endereco.enderecoToCSV() + "," + cpf + "," + peso + "," + altura;
     }
-
     
   @Override
 public String toString() {

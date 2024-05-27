@@ -141,7 +141,7 @@ public class Menu {
 
         switch (opcao) {
             case 1:
-                // Mostrar dados cliente pessoa
+                controller.listarClientes();
                 break;
             case 2:
                 // Mostrar dados cliente empresa

@@ -16,6 +16,11 @@ public class Endereco {
         this.cep = cep;
         this.cidade = cidade;
     }
+
+    public String enderecoToCSV() {
+        return rua + "," + numero + "," + bairro + "," + cep + "," + cidade.cidadeToCSV();
+    }
+
     @Override
     public String toString() {
         return "Endereco [rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", cep=" + cep + ", cidade="
