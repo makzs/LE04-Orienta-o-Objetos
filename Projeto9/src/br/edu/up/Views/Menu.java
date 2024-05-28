@@ -107,7 +107,7 @@ public class Menu {
                 Endereco novoEndereco = new Endereco(rua, numero, bairro, cep, novaCidade);
                 ClientePessoa novoClientePessoa = new ClientePessoa(nome, telefone, email, novoEndereco, cpf, peso, altura);
 
-                controller.adicionarCliente(novoClientePessoa);
+                controller.adicionarClientePessoa(novoClientePessoa);
                 System.out.println("Cliente Adicionado com Sucesso");
 
                 break;
@@ -141,7 +141,7 @@ public class Menu {
 
         switch (opcao) {
             case 1:
-                controller.listarClientes();
+                controller.listarClientesPessoa();
                 break;
             case 2:
                 // Mostrar dados cliente empresa

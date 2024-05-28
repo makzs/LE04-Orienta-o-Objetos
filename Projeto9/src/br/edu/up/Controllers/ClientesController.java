@@ -8,22 +8,27 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import br.edu.up.Models.ClienteEmpresa;
 import br.edu.up.Models.ClientePessoa;
 
 public class ClientesController {
 
-    File ClienteBD = new File("C:\\Sistema\\FN\\Programação\\Testes\\LE04-Orienta-o-Objetos\\Projeto9\\src\\Clientes.csv");
-    List<ClientePessoa> listaClientes = new ArrayList<>();
+    File ClientesPessoaBD = new File("C:\\Sistema\\FN\\Programação\\Testes\\LE04-Orienta-o-Objetos\\Projeto9\\src\\ClientesPessoa.csv");
+    File ClientesEmpresaBD = new File("C:\\Sistema\\FN\\Programação\\Testes\\LE04-Orienta-o-Objetos\\Projeto9\\src\\ClientesEmpresa.csv");
 
-    public void adicionarCliente(ClientePessoa cliente) {
-        listaClientes.add(cliente);
+    List<ClientePessoa> listaClientesPessoa = new ArrayList<>();
+    List<ClienteEmpresa> listaClientesEmpresa = new ArrayList<>();
+
+    public void adicionarClientePessoa(ClientePessoa cliente) {
+        listaClientesPessoa.add(cliente);
         salvarClientesPessoa();
     }
 
-    public void listarClientes(){
+    public void listarClientesPessoa(){
         try { 
 
-            Scanner leitor = new Scanner(ClienteBD);
+            Scanner leitor = new Scanner(ClientesPessoaBD);
             leitor.nextLine();
 
 
@@ -36,16 +41,16 @@ public class ClientesController {
 
             leitor.close();
         } catch (FileNotFoundException x) { // trata o erro
-            System.out.println("O arquivo" + ClienteBD + " nao foi encontrado pois " + x.getCause());
+            System.out.println("O arquivo" + ClientesPessoaBD + " nao foi encontrado pois " + x.getCause());
         }
     }
 
     public void salvarClientesPessoa() {
         try {
-            FileWriter ClienteBDgravar = new FileWriter(ClienteBD, true);
+            FileWriter ClienteBDgravar = new FileWriter(ClientesPessoaBD, true);
             PrintWriter gravador = new PrintWriter(ClienteBDgravar);
 
-            for (ClientePessoa c : listaClientes) {
+            for (ClientePessoa c : listaClientesPessoa) {
                 String linhaCSV = c.clientePessoaToCSV();
                 gravador.println(linhaCSV);
             }
