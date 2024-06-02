@@ -14,11 +14,11 @@ import br.edu.up.Models.ClientePessoa;
 
 public class ClientesController {
 
-    File ClientesPessoaBD = new File("C:\\Sistema\\FN\\Programação\\Testes\\LE04-Orienta-o-Objetos\\Projeto9\\src\\ClientesPessoa.csv");
-    File ClientesEmpresaBD = new File("C:\\Sistema\\FN\\Programação\\Testes\\LE04-Orienta-o-Objetos\\Projeto9\\src\\ClientesEmpresa.csv");
+    File ClientesPessoaBD = new File("");
+    File ClientesEmpresaBD = new File("");
 
-    List<ClientePessoa> listaClientesPessoa = new ArrayList<>();
-    List<ClienteEmpresa> listaClientesEmpresa = new ArrayList<>();
+    public List<ClientePessoa> listaClientesPessoa = new ArrayList<>();
+    public List<ClienteEmpresa> listaClientesEmpresa = new ArrayList<>();
 
     public void adicionarClientePessoa(ClientePessoa cliente) {
         listaClientesPessoa.add(cliente);
@@ -99,4 +99,6 @@ public class ClientesController {
             System.out.println("Erro de IO: " + e.getMessage());
         }
     }
+
+    
 }

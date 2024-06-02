@@ -9,11 +9,19 @@ public abstract class Cliente {
     protected Double vlrEmprestado;
 
     public void emprestar(Double valor){
-        
+        if (vlrEmprestado > vlrMaxCredito){
+            vlrEmprestado += valor;
+        }
     }
 
-    public Double devolver(Double valor){
-        return valor;
+    public void devolver(Double valor){
+        if (vlrEmprestado != 0){
+            vlrEmprestado -= valor;
+        }
+    }
+
+    public Double getSaldo(){
+        return vlrEmprestado;
     }
     
     public Cliente(String nome, String telefone, String email, Endereco endereco) {
