@@ -12,6 +12,9 @@ public class ClienteEmpresa extends Cliente{
         this.anoFundacao = anoFundacao;
     }
     
+    public String clienteEmpresaToCSV() {
+        return nome + "," + telefone + "," + email + "," + endereco.enderecoToCSV() + "," + cnpj + "," + inscEstadual + "," + anoFundacao;
+    }
 
     @Override
     public String toString() {

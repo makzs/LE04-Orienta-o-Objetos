@@ -25,6 +25,11 @@ public class ClientesController {
         salvarClientesPessoa();
     }
 
+    public void adicionarClienteEmpresa(ClienteEmpresa clienteEmpresa) {
+        listaClientesEmpresa.add(clienteEmpresa);
+        salvarClientesEmpresa();
+    }
+
     public void listarClientesPessoa(){
         try { 
 
@@ -45,6 +50,26 @@ public class ClientesController {
         }
     }
 
+    public void listarClientesEmpresa(){
+        try { 
+
+            Scanner leitor = new Scanner(ClientesEmpresaBD);
+            leitor.nextLine();
+
+
+            while (leitor.hasNextLine()) {
+                String linha = leitor.nextLine();
+                System.out.println(linha);
+                
+
+            }
+
+            leitor.close();
+        } catch (FileNotFoundException x) { // trata o erro
+            System.out.println("O arquivo" + ClientesEmpresaBD + " nao foi encontrado pois " + x.getCause());
+        }
+    }
+
     public void salvarClientesPessoa() {
         try {
             FileWriter ClienteBDgravar = new FileWriter(ClientesPessoaBD, true);
@@ -52,6 +77,21 @@ public class ClientesController {
 
             for (ClientePessoa c : listaClientesPessoa) {
                 String linhaCSV = c.clientePessoaToCSV();
+                gravador.println(linhaCSV);
+            }
+            gravador.close();
+        } catch (IOException e) {
+            System.out.println("Erro de IO: " + e.getMessage());
+        }
+    }
+
+    public void salvarClientesEmpresa() {
+        try {
+            FileWriter ClienteBDgravar = new FileWriter(ClientesEmpresaBD, true);
+            PrintWriter gravador = new PrintWriter(ClienteBDgravar);
+
+            for (ClienteEmpresa c : listaClientesEmpresa) {
+                String linhaCSV = c.clienteEmpresaToCSV();
                 gravador.println(linhaCSV);
             }
             gravador.close();

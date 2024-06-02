@@ -66,7 +66,7 @@ public class Menu {
         switch (opcao) {
             case 1:
                 System.out.println("\n------------------------------------");
-                System.out.println("Cadastro de novo Cliente");
+                System.out.println("Cadastro de novo Cliente Pessoa");
                 System.out.println("------------------------------------\n");
 
                 leitor.nextLine();
@@ -112,7 +112,50 @@ public class Menu {
 
                 break;
             case 2:
-                // incluir cliente empresa
+            System.out.println("\n------------------------------------");
+            System.out.println("Cadastro de novo Cliente Empresa");
+            System.out.println("------------------------------------\n");
+
+            leitor.nextLine();
+            System.out.println("Informe o nome da nova Empresa: ");
+            String nomeEmpresa = leitor.nextLine();
+            System.out.println("Informe o telefone da nova Empresa: ");
+            String telefoneEmpresa = leitor.nextLine();
+            System.out.println("Informe o email da nova Empresa: ");
+            String emailEmpresa = leitor.nextLine();
+            System.out.println("Informe o cnpj da nova Empresa: ");
+            String cnpj = leitor.nextLine();
+            System.out.println("Informe a inscrição estadual da nova Empresa: ");
+            String inscEstadual = leitor.nextLine();
+            System.out.println("Informe o ano da fundação da nova Empresa: ");
+            int anoFundacao = leitor.nextInt();
+
+            System.out.println("\n------------------------------------");
+            System.out.println("Cadastro de Endereço da nova Empresa");
+            System.out.println("------------------------------------\n");
+
+            leitor.nextLine();
+            System.out.println("Informe a UF (unidade federal): ");
+            String ufEmpresa = leitor.nextLine();
+            System.out.println("Informe o nome da cidade: ");
+            String nomeCidadeEmpresa = leitor.nextLine();
+
+            Cidade novaCidadeEmpresa = new Cidade(nomeCidadeEmpresa, ufEmpresa);
+
+            System.out.println("Informe o nome da rua: ");
+            String ruaEmpresa = leitor.nextLine();
+            System.out.println("Informe o numero: ");
+            String numeroEmpresa = leitor.nextLine();
+            System.out.println("Informe o bairro: ");
+            String bairroEmpresa = leitor.nextLine();
+            System.out.println("Informe o cep: ");
+            String cepEmpresa = leitor.nextLine();
+
+            Endereco novoEnderecoEmpresa = new Endereco(ruaEmpresa, numeroEmpresa, bairroEmpresa, cepEmpresa, novaCidadeEmpresa);
+            ClienteEmpresa novoClienteEmpresa = new ClienteEmpresa(nomeEmpresa, telefoneEmpresa, emailEmpresa, novoEnderecoEmpresa, cnpj, inscEstadual, anoFundacao);
+
+            controller.adicionarClienteEmpresa(novoClienteEmpresa);
+            System.out.println("Cliente Adicionado com Sucesso");
                 break;
             case 3:
                 mostrar();
@@ -144,7 +187,7 @@ public class Menu {
                 controller.listarClientesPessoa();
                 break;
             case 2:
-                // Mostrar dados cliente empresa
+                controller.listarClientesEmpresa();
                 break;
             case 3:
                 mostrar();
